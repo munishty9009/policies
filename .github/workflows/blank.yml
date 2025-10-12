@@ -1,19 +1,23 @@
 name: manage-azure-policy-451d8a7d
 on:
-  workflow_dispatch:
-    inputs:
-      remarks:
-        description: 'Reason for triggering the workflow run'
-        required: false
-        default: 'Updating Azure Policies'
 
+  pull_request:
+    branches: [ "main" ]
+
+    
+permissions:
+  contents: read    #possible values : None, Read, Write
+  
 
 jobs:
   apply-azure-policy:
     runs-on: ubuntu-latest
+    
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    
     - name: Login to Azure
       uses: azure/login@v1
       with:
@@ -24,6 +28,5 @@ jobs:
     - name: Create or Update Azure Policies
       uses: azure/manage-azure-policy@v0
       with:
-        paths: |
-          policy.json
+        paths: policy.json
          
