@@ -7,7 +7,6 @@ resource "azurerm_resource_group" "rg" {
   location = "East US"
 }
 
-
 # Create custom role
 resource "azurerm_role_definition" "custom_role" {
   name        = "CustomVMReader"
