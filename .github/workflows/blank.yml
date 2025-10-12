@@ -8,7 +8,7 @@ on:
         description: "Name of the policy definition"
         required: true
       policy_file:
-        description: "policy.json"
+        description: "./policy.json"
         required: true
 
     
