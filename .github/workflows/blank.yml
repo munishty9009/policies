@@ -3,6 +3,13 @@ on:
 
   pull_request:
     branches: [ "main" ]
+    inputs:
+      policy_name:
+        description: "Name of the policy definition"
+        required: true
+      policy_file:
+        description: "policy.json"
+        required: true
 
     
 permissions:
@@ -25,8 +32,12 @@ jobs:
         allow-no-subscriptions: true
 
         
-    - name: Create or Update Azure Policies
-      uses: azure/manage-azure-policy@v0
-      with:
-        paths: policy.json
-         
+ - name: Create or Update Azure Policy
+        uses: azure/manage-azure-policy@v0
+        with:
+          policyDefinition: ${{ github.event.inputs.policy_file }}
+          name: ${{ github.event.inputs.policy_name }}
+          mode: All
+          displayName: "My Custom Policy"
+          description: "Ensures resources are deployed only in allowed regions"
+          params: ./params.json
