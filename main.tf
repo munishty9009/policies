@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "rg" {
 
 # Create custom role
 resource "azurerm_role_definition" "custom_role" {
-  name        = "CustomVMReader"
+  name        = "CustomVMReader1"
   scope       = data.azurerm_subscription.primary.id
   description = "Custom role: read-only access to VMs"
   assignable_scopes = [
