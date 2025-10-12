@@ -31,8 +31,7 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
         allow-no-subscriptions: true
 
-        
- - name: Create or Update Azure Policy
+    - name: Create or Update Azure Policy
         uses: azure/manage-azure-policy@v0
         with:
           policyDefinition: ${{ github.event.inputs.policy_file }}
