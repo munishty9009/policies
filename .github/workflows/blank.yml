@@ -32,11 +32,11 @@ jobs:
         allow-no-subscriptions: true
 
     - name: Create or Update Azure Policy
-        uses: azure/manage-azure-policy@v0
-        with:
-          policyDefinition: ${{ github.event.inputs.policy_file }}
-          name: ${{ github.event.inputs.policy_name }}
-          mode: All
-          displayName: "My Custom Policy"
-          description: "Ensures resources are deployed only in allowed regions"
-          params: ./params.json
+      uses: azure/manage-azure-policy@v0
+      with:
+        policyDefinition: ${{ github.event.inputs.policy_file }}
+        name: ${{ github.event.inputs.policy_name }}
+        mode: All
+        displayName: "My Custom Policy"
+        description: "Ensures resources are deployed only in allowed regions"
+      
