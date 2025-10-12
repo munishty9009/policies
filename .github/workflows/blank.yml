@@ -15,28 +15,20 @@ on:
 permissions:
   contents: read    #possible values : None, Read, Write
   
-
 jobs:
-  apply-azure-policy:
+  manage-policy:
     runs-on: ubuntu-latest
-    
-    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
-        allow-no-subscriptions: true
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Create or Update Azure Policy
-      uses: azure/manage-azure-policy@v0
-      with:
-        policyDefinition: ${{ github.event.inputs.policy_file }}
-        name: ${{ github.event.inputs.policy_name }}
-        mode: All
-        displayName: "My Custom Policy"
-        description: "Ensures resources are deployed only in allowed regions"
-      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create or Update Azure Policies
+        uses: azure/manage-azure-policy@v0
+        with:
+          paths: ${{ github.event.inputs.policy_path }}
+          mode: All
