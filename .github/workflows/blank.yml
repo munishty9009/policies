@@ -3,15 +3,7 @@ on:
 
   pull_request:
     branches: [ "main" ]
-    inputs:
-      policy_name:
-        description: "Name of the policy definition"
-        required: true
-      policy_file:
-        description: "./policy/policy.json"
-        required: true
-
-    
+       
 permissions:
   contents: read    #possible values : None, Read, Write
   
@@ -27,8 +19,16 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Create or Update Azure Policies
-        uses: azure/manage-azure-policy@v0
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
         with:
-          paths: ${{ github.event.inputs.policy_path }}
-          mode: All
+          terraform_version: 1.5.7
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "rg_name=my-rbac-rg" -var "sp_object_id=${{ secrets.SP_OBJECT_ID }}"
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "rg_name=my-rbac-rg" -var "sp_object_id=${{ secrets.SP_OBJECT_ID }}"
