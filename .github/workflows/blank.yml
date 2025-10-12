@@ -23,6 +23,7 @@ jobs:
       uses: azure/manage-azure-policy@v0
       with:
         paths: |
+          policy.json
          # policies/Deploy_a_flow_log_resource_with_target_network_security_group_0db34a60-64f4-4bf6-bd44-f95c16cf34b9/**
           #policies/Flow_logs_should_be_enabled_for_every_network_security_group_27960feb-a23c-4577-8d36-ef8b5f35e0be/**
           #policies/Configure_network_security_groups_to_use_specific_workspace,_storage_account_and_flowlog_retention_policy_for_traffic_analytics_5e1cd26a-5090-4fdb-9d6a-84a90335e22d/**
