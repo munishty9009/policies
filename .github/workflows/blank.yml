@@ -10,11 +10,11 @@ jobs:
   manage-policy:
     runs-on: ubuntu-latest
 
-    #env:
+    env:
       #ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       #ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       #ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      #ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -33,7 +33,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan # -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "rg_name=my-rbac-rg" -var "sp_object_id=${{ secrets.SP_OBJECT_ID }}"
+        run: terraform plan  -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" #-var "rg_name=my-rbac-rg" -var "sp_object_id=${{ secrets.SP_OBJECT_ID }}"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve #-var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "rg_name=my-rbac-rg" -var "sp_object_id=${{ secrets.SP_OBJECT_ID }}"
+        run: terraform apply -auto-approve -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" #-var "rg_name=my-rbac-rg" -var "sp_object_id=${{ secrets.SP_OBJECT_ID }}"
