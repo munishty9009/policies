@@ -1,7 +1,3 @@
-variable "subscription_id" {
-  type        = string
-  description = "Azure subscription ID"
-}
 
 variable "rg_name" {
   type        = string
