@@ -11,5 +11,4 @@ variable "sp_object_id" {
 
 variable "env" {
   type = string
-
 }
