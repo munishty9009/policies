@@ -1,14 +1,11 @@
-variable "location" {
-  type = string
-}
 
 variable "rg_name" {
-  type        = string
+  type = string
   description = "Resource Group name where role will be assigned"
 }
 
 variable "sp_object_id" {
-  type        = string
+  type = string
   description = "Service Principal Object ID to assign custom role"
 }
 
