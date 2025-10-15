@@ -4,13 +4,13 @@ data "azurerm_subscription" "primary" {}
 # Resource group (scope)
 resource "azurerm_resource_group" "rg" {
   name     = var.rg_name
-  location = "East US"
+  location = "var.location"
 }
 
 
 # Create custom role
 resource "azurerm_role_definition" "custom_role" {
-  name        = "CustomVMReader2"
+  name        = "CustomVMReader"
   scope       = data.azurerm_subscription.primary.id
   description = "Custom role: read-only access to VMs"
   assignable_scopes = [
