@@ -3,7 +3,7 @@ data "azurerm_subscription" "primary" {}
 
 # Resource group (scope)
 resource "azurerm_resource_group" "rg" {
-  name     = var.rg_name
+  name     = "${var.env}-${var.rg_name}"
   location = "var.location"
 }
 
