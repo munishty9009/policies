@@ -1,4 +1,14 @@
 terraform {
+  backend "azurerm" {
+    resource_group_name   = "MyFirstRGfromTerraform"
+    storage_account_name  = "mystorageaccount1990"
+    container_name        = "state-files"
+    key                   = "AzurePolicies"
+  }
+}
+
+
+terraform {
   required_version = ">= 1.5.0"
 
   required_providers {
