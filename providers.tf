@@ -3,7 +3,7 @@ terraform {
     resource_group_name   = "MyFirstRGfromTerraform"
     storage_account_name  = "mystorageaccount1990"
     container_name        = "state-files"
-    key                   = "AzurePolicies"
+    key                   = "ApplyPolicies"
   }
 }
 
