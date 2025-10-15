@@ -12,3 +12,8 @@ variable "sp_object_id" {
   type        = string
   description = "Service Principal Object ID to assign custom role"
 }
+
+variable "env" {
+  type = string
+
+}
