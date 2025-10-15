@@ -1,4 +1,4 @@
-name: manage-azure-policy-451d8a7d
+name: Manage_Policy
 on:
 
   pull_request:
@@ -11,7 +11,7 @@ jobs:
   manage-policy:
     runs-on: ubuntu-latest
 
-    env:
+    #env:
       #ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       #ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       #ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Azure Login
+      - name: Azure Login to NamanTyagi2610 Tenant
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
