@@ -1,6 +1,5 @@
 name: Manage_Policy
 on:
-
   pull_request:
     branches: [ "main" ]
        
