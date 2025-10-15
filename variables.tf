@@ -17,5 +17,5 @@ variable "subscription_id" {
 }
 
 variable "location" {
-  type=string
+  type = string
 }
