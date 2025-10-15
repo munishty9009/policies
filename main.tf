@@ -1,7 +1,6 @@
 # Get subscription info
 data "azurerm_subscription" "primary" {}
 
-
 # Resource group (scope)
 resource "azurerm_resource_group" "rg" {
   name     = "${var.env}-${var.rg_name}"
